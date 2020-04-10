@@ -9,7 +9,7 @@ using Statistics: mean
 using Plots
 
 function TrainNN()
-    model = Chain(Dense(2371, length(GetRealNames())), softmax)
+    model = Chain(Dense(2371, length(GetRealNames()), sigmoid), softmax)
 
     model = gpu(model)
 
@@ -21,15 +21,15 @@ function TrainNN()
 
     accu_time = Vector{Float64}()
 
-    for e = 0:5
+    for e = 0:50
         println("Epoch: $e")
 
         Flux.train!(loss, params(model), datas, optimiser)
 
-        push!(accu_time, CalcAccuracy(model))
+        #push!(accu_time, CalcAccuracy(model))
     end
-
-    plot(0:5, accu_time)
+    println(CalcAccuracy(model))
+    #plot(0:50, accu_time)
 end
 
 function CalcAccuracy(nn)::Float64
@@ -38,8 +38,6 @@ function CalcAccuracy(nn)::Float64
     for one in _testDataX
         push!(accuracy_buffer, argmax(nn(gpu(one))))
     end
-
-    println(accuracy_buffer)
 
     accuracy_mean = 0
 
