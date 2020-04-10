@@ -9,8 +9,13 @@ _classifiedData = _classifiedData[
     :,
 ]
 
+_unclassifiedData = DataFrame(CSV.File("data_db\\need_names.csv"))
+_unclassifiedData = _unclassifiedData[completecases(_unclassifiedData), :]
+
 _trainData = DataFrame()
 _testData = DataFrame()
+
+_needData = Vector{Vector{Int64}}()
 
 _trainDataX = Vector{Vector{Int64}}()
 _trainDataY = Vector{Vector{Int64}}()
@@ -26,6 +31,12 @@ function PrepareNNData(alpha)
 
     train_data_X = _trainData[:, 1]
     train_data_Y = _trainData[:, 2]
+
+    global _needData = _VectorizeNamesWithDictionary(
+        _unclassifiedData[:, 1],
+        GetDictionary(),
+        GetVectorizedDictionary(),
+    )
 
     global _trainDataX = _VectorizeNamesWithDictionary(
         train_data_X,
