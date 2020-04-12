@@ -11,7 +11,9 @@ _realNames = ["nill_name", "Sania", "Sofia", "Maria", "Maksim", "Miha", "Artem",
                 "Olga", "Taras", "Ilia", "Nataliia", "Kolia", "Oleg", "Alena", "Tonia",
                 "Bodia", "Diana", "Galina", "Ilona", "Ina", "Ivanka", "Lerka", "Nazar", "Petia",
                 "Ruslan", "Sewa", "Stepan", "Sveta", "Tania", "Vadim", "Valera", "Yan",
-                "Yaroslava", "Arsen", "Vasia", "German", "Kristina", "Myroslava", "Rita"]
+                "Yaroslava", "Arsen", "Vasia", "German", "Kristina", "Myroslava", "Rita", "Arkadii",
+                "Dana", "Lana", "Lidia", "Lili", "Luda", "Margo", "Marta", "Nadia", "Viola", "Yana",
+                "Rodion"]
 
 _vectorisedRealNames = VectorizeWords(_realNames)
 
